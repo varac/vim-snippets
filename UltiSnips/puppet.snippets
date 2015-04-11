@@ -75,8 +75,11 @@ endsnippet
 
 snippet file "File resource type" b
 file { '${1:name}':
-	source => "puppet://${2:path}",
-	mode   => ${3:mode},
+	source  => 'puppet:///modules/${2:path}',
+	content => template('MODULE/${2:path}'),
+	mode    => '${3:mode}',
+  owner   => 'root',
+  group   => 'root',
 }
 endsnippet
 
